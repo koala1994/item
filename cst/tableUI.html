@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>photoSlider-纯js移动开发轮播图、相册滑动插件</title>
+<style type="text/css">
+.text{
+  position:absolute;
+  left:0;
+  top:0;
+}
+.evenClass{
+  background: black;
+}
+.oddClass{
+  background:green;
+}
+.active{
+  background:red;
+}
+</style>
+</head>
+<body>
+
+<table width="500" height="300" border="1">
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+</body>
+</html>
+<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/tableUi.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$('table').tableUI();
+</script>
+

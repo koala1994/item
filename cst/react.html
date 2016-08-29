@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+<link rel="stylesheet" type="text/css" href="css/boom.css">
+</head>
+<style type="text/css">
+*{
+  margin:0;
+  padding:0;
+}
+#box{
+  height:100px;
+}
+.ni{
+	color:red;
+}
+
+</style>
+
+<body>
+  <div id="box"></div>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/react.min.js"></script>
+  <script type="text/javascript" src="js/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <script type="text/babel">
+  	var MyTitle = React.createClass({
+  propTypes: {
+    title: React.PropTypes.string.isRequired,
+  },
+
+  render: function() {
+     return <h1> {this.props.title} </h1>;
+   }
+});
+  	var data=123;
+				ReactDOM.render(
+				<MyTitle title={data} />,
+					document.getElementById('box')
+				);
+    </script>
+</body>
+</html>
+

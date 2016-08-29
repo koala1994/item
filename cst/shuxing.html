@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<style type="text/css">
+	div{
+		width: 200px;
+		background: red;
+		height:200px;
+	}
+</style>
+<script type="text/javascript">
+	var a=document.getElementById("p");
+	function button_onclick(){
+		var a=document.getElementById("p");
+		a.getElementsByTagName("span")[0].textContent="0";
+		for(var i=0;i<=100;i++){
+			updateProgress(i);
+		}
+	}
+	function updateProgress(newvalue){
+		var a=document.getElementById("p");
+		a.value=newvalue;
+		a.getElementsByTagName("span")[0].textContent=newvalue;
+	}
+	function ShowFileName(){
+		var file;
+		for(var i=0;i<document.getElementById("file").files.length;i++){
+			file=document.getElementById("file").files[i];
+			console.log(file);
+		}
+	}
+	function ShowFileType(){
+			var file;
+			file=document.getElementById("file").files[0];
+			var size=document.getElementById("size");
+			size.innerHTML=file.size;
+			var type=document.getElementById("type");
+			type.innerHTML=file.type;
+	}
+	if(typeof FileReader=="undefined"){
+		alert("no");
+	}else{
+		
+		var reader=new FileReader();
+	}
+
+</script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	setInterval(function(){
+		$('meter').val($('meter').val()+1);
+		$('.zhi').text($('meter').val());
+	},30)
+</script>
+<style type="text/css">
+	[type^="text"]:disabled{
+		background: red
+	}
+	.aaa:hover{
+		transform: scale(1.2) rotate(360deg) ;
+		transform:translate(500px,500px);
+	-ms-transform: rotate(360deg) scale(1.2);
+	-moz-transform: rotate(360deg) scale(1.2);
+	-webkit-transform: rotate(360deg) scale(1.2);
+	-o-transform: rotate(360deg) scale(1.2);
+	transition: all 0.2s ease-out;
+		}
+	progress span{
+		width:50px;
+		display: block;
+	}
+		</style>
+<body>
+	<div contentEditable="true" class="aaa"></div>
+	<input type="text" spellcheck="true"></input>
+	<textarea spellcheck="true"></textarea>
+	<form method="post">
+		<input name="text" type="text" required pattern="[0-9]{3}"  max="300" disabled="disabled"></input>
+		<input type="number" max="200" step="10"></input>
+		<input type="submit"></input>
+		<section>
+			<h2>prigress元素的使用实例</h2>
+			<p>完成百分比:<progress id="p" max="100" ><span>0</span>%</progress></p>
+			<p class="zhi"></p>
+			<input type="button" onclick="button_onclick()" value="点击"></input>
+		</section>
+	</form>
+	<meter value="0" min="0" max="100" low="40" high="90" optimun="100">A+</meter>
+	<small>13145453</small>
+	<input type="file" id="file" multiple size="80"></input>
+	<input type="button" onclick="ShowFileName()" value="上传"></input>
+	<input type="button" onclick="ShowFileType()" value="显示文件信息"></input>
+	文件类型长度:<span id="size"></span>
+	文件类型:<span id="type"></span>
+</body>
+</html>

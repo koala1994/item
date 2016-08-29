@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+<link rel="stylesheet" type="text/css" href="css/boom.css">
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<style type="text/css">
+*{
+  margin:0;
+  padding: 0;
+}
+
+</style>
+
+<body>
+  <input type="text">
+  <div class="local"></div>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript">
+  var dou=new Array(); 
+  var arr;
+  var local1=localStorage.getItem("arr");
+  if(local1!=null&&local1!=""){
+
+    var local=localStorage.getItem("arr").split(",");
+    console.log(typeof local);
+    dou.push(local);
+
+      for(var i=0;i<local.length;i++){
+     
+      $('.local').append('<div>'+local[i]+'<em onclick="ge(this)">点击清除</em></div>');
+    }
+  }
+  if($('.local').html()!=""&&$('.local').html()!=null){
+    $('.local').append('<div class="clear">清除历史记录<em onclick="qing()">点击</em></div>')
+  }
+function qing(){
+  $('.local').html("");
+  localStorage.clear();
+}
+function ge(obj){
+  local.splice($(obj).parent().index(),1);
+  $(obj).parent().html("");
+  localStorage.setItem("arr",local);
+}  
+  $('input').blur(function(){
+    if($('input').val()!=""&&$('input').val!=null){
+      localStorage.setItem("site", $('input').val());
+       var site=localStorage.getItem("site");
+   //console.log(site);
+   dou.push(site);
+   console.log(dou);
+   localStorage.setItem("arr", dou);
+   console.log(localStorage.getItem("arr").split(","));
+    }
+    
+  
+  })
+  </script>
+</body>
+</html>
+

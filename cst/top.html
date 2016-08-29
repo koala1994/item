@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<style type="text/css">
+        *{
+            margin:0px;
+            padding: 0px;
+        }
+        html{
+            font-size: 62.5%;
+        }
+        .content{
+            overflow:hidden;
+            margin:10px;
+        }
+        .music{
+            margin-left: 30px;
+            margin-right: 70px;
+            height: 30px;
+            position: relative;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            padding: 0px 10px;
+            overflow: hidden;
+            
+        }
+        .no_play {
+            height: 30px;
+            background: url(images/bbs_audio_bg.png) repeat-x ;
+            background-position:0 50%;
+            overflow:hidden;
+            position:relative;
+        }
+        .play_btn{
+            width:30px;
+            height:30px;
+            background:url(images/bbs_audio_play.png) no-repeat;
+            background-size:100% 100%;
+            float:left;
+        }
+        .time{
+            width:70px;
+            height:30px;
+            line-height: 30px;
+            background:orange;
+            border-radius: 10px;
+            float:right;
+        }
+        .play{
+            height:30px;
+            background: url(images/bbs_audio_percent.png) repeat-x ;
+            background-position:0 50%;
+            float:left;
+        }
+        .no_play a{
+            width:15px;
+            height:15px;
+            border-radius: 50%;
+            background:red;
+            position:absolute;
+            top:7px;
+        }
+        .play span{
+            height:4px;
+            background:#000;
+            display: block;
+            margin-top: 13px;
+        }
+        .stop{
+            width:30px;
+            height:30px;
+            background:url(images/bbs_audio_pause.png) no-repeat ;
+            background-size: 100% 100%;
+        }
+        .demo{
+            height:40px;
+            line-height: 40px;
+            color:#fff;
+            background:red;
+        }
+        .demo div{
+            opacity:.3;
+        }
+</style>
+<body>
+    <div class="content">
+    
+    <div class="play_btn"></div>
+     <div class="time">
+        00:06:10
+    </div>   
+    <div class="music">
+        <div class="no_play">
+            <div class="play">
+                <span></span>
+            </div>
+            <a></a>
+        </div>
+    </div>
+    
+    </div>
+    <div class="demo"><div>后地哈师大</div></div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+$('.play_btn').click(function(event) {
+    if($(this).hasClass('stop')){
+        $('.play').stop();
+        console.log(1);
+        $(this).removeClass('stop');
+    }
+    else{
+        $(this).addClass('stop');
+        $('.play').animate({width:"98%"},60000);
+    }
+    
+    
+});
+</script>
+	</body>
+</html>

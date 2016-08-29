@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://www.skylineholding.com.cn/ -->
+<html lang="zh-CN">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<title>可得优</title>
+	<style>
+		.div{
+			width:500px;
+			height:400px;
+			position: relative;
+		}
+		.div1{
+			width:500px;
+			height:400px;
+			overflow: hidden;
+			position:relative;
+			display:none;
+		}
+		img{
+			display:block;
+		}
+		.div img{
+			width: 100%;
+			height:100%;
+		}
+		.img{
+			
+		}
+		.move{
+			background: rgba(255,255,255,.5);
+			position:absolute;
+			z-index: 999;
+			text-align: center;
+			display:table;
+			display:none;
+		}
+		em{
+			display:table-cell;
+			vertical-align: middle;
+			font-size: 50px;
+			font-style: normal;
+		}
+	</style>
+<body>
+	<div id="big" class="div">
+
+	</div>
+
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+;(function($){
+	$.fn.big=function(options){
+		var defaults={
+			width:500,
+			height:400,
+			img:'images/pic.png'
+		}
+		var options=$.extend({},defaults,options);
+		var that=this;
+		var scale1,scale2;
+		big.fn=big.prototype={
+			wrap:that,
+			scale1:scale1,
+			scale2:scale2,
+			box:$('<span class="move"><em></em></span>'),
+			img:$('<img>'),
+			img1:$('<img class="img">'),
+			div1:$('<div class="div1"></div>'),
+			add:function(){
+				this.img.attr('src',options.img);
+				this.img1.attr('src',options.img);
+				this.wrap.width(options.width);
+				this.wrap.height(options.height);
+				this.div1.width(options.width);
+				this.div1.height(options.height);
+				this.div1.append(this.img1);
+				this.wrap.append(this.img).append(this.box).after(this.div1);
+			},
+			goMove:function(event){
+				var event=window.event||event;
+				var x=event.clientX;
+				var y=event.clientY;
+				this.box.show();
+				this.div1.show();
+				this.scale1=this.img1.width()/this.wrap.width();
+				this.scale2=this.img1.height()/this.wrap.height();
+				console.log(this.scale1);
+				this.box.width(this.wrap.width()/this.scale1);
+				this.box.height(this.wrap.height()/this.scale2);
+
+				x=x-this.wrap.offset().left-this.box.width()/2;
+				y=y-this.wrap.offset().top-this.box.height()/2;
+				if(x<0){
+					x=0;
+				}else if(x>this.wrap.width()-this.box.width()){
+					x=this.wrap.width()-this.box.width();
+				}
+				if(y<0){
+					x=0;
+				}else if(y>this.wrap.height()-this.box.height()){
+					y=this.wrap.height()-this.box.height();
+				}
+				this.box.css('left',x);
+				this.box.css('top',y)
+				this.div1.scrollLeft(this.scale1 * x);
+				this.div1.scrollTop(this.scale2 * y);
+			},
+			init:function(){
+				var th=this;
+				this.add();
+				
+				
+				this.wrap.mousemove(function(){
+					th.goMove(event);
+				})
+				this.wrap.mouseout(function(){
+					th.box.hide();
+					th.div1.hide();
+				})
+			}
+		}
+		big.fn.init();
+	}
+})(jQuery)
+   $('.div').big({
+   	width:400,
+   	height:250
+   });
+</script>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+<link rel="stylesheet" type="text/css" href="css/boom.css">
+</head>
+<style type="text/css">
+*{
+  margin:0;
+  padding: 0;
+}
+.he{
+  position:relative;
+  width:500px;
+  margin:0 auto;
+  font-family: "微软雅黑";
+}
+.ai{
+  height:50px;
+  font-size: 18px;
+  text-align: center;
+  line-height: 50px;
+}
+.ai:after{
+  width:30%;
+  content:"";
+  border-bottom: 1px solid #999;
+  font-size: 18px;
+  position:absolute;
+  top:25px;
+}
+.ai:before{
+  width:30%;
+  content:"";
+  border-bottom: 1px solid #999;
+  font-size: 18px;
+  position:absolute;
+  top:25px;
+}
+</style>
+
+<body>
+  <div class="he">
+    <div class="ai">
+    为爱而生
+  </div>
+  </div>
+  
+  <select class="sheng">
+    
+  </select>
+  <select class="shi">
+    
+  </select>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript">
+    var arr=["浙江","江苏","湖南"];
+    //var ha={"1":["杭州","温州市","宁波市"],"zj":["杭州市","温州市","宁波市"]};
+    var ha=[{"name":["杭州","温州市","宁波市"]},{"name":["杭州市","温州市","宁波市"]}];
+    //var ha=[{"12":["杭州","温州市","宁波市"]},{"zj":["杭州市","温州市","宁波市"]}];
+    var shen;
+     var lst;
+    for(var i=0;i<arr.length;i++){
+      $('.sheng').append("<option data-val="+arr[i]+">"+arr[i]+"</option>");
+    }
+    $('.sheng').change(function (argument) {
+      $('.shi').empty();
+        for(var g=0;g<arr.length;g++){
+          if($(this).val()==arr[g]){
+            sheng=g;
+          }
+        }
+      lst=ha[sheng].name;
+      console.log(lst.length);
+       for(var j=0;j<lst.length;j++){
+           $('.shi').append("<option>"+lst[j]+"</option>");
+       }
+    })
+    $('.sheng').trigger('change');
+    
+  </script>
+</body>
+</html>
+

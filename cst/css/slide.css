@@ -1,0 +1,118 @@
+        body{
+    		font-family: 'Microsoft Yahei';
+    		text-align: center;
+    	}
+    	/*.slide{
+    		width:100%;
+    		position: relative;
+    		height: 250px;
+    		overflow: hidden;
+    	}*/
+
+    	.slide_control{
+    		position: absolute;
+    		left:50%;
+    		bottom:5px;
+    		z-index:999;
+    	}
+
+    	.slide_control > a{
+    		width:12px;
+    		height: 12px;
+    		display: inline-block;
+    		border-radius: 12px;
+    		background-color: #fff;
+    		margin: 0px 5px;
+    	}
+
+    	.slide_control > a:hover,.slide > .slide_control > a.actived{
+    		background-color: #ff6600;
+    		-webkit-transition: background-color 0.5s;
+    		-o-transition: background-color 0.5s;
+    		transition: background-color 0.5s;
+    	}
+
+    	.control_btn{
+    		  display: block;
+			  width: 80px;
+			  height: 120px;
+			  font-size: 80px;
+			  text-align: center;
+			  line-height: 120px;
+			  color: #fff;
+			  text-decoration: none;
+			  position: absolute;
+			  top: 50%;
+			  margin-top: -60px;
+			  z-index:999;
+			  font-family: '瀹嬩綋';
+    	}
+
+    	.control_btn:hover{
+    		-webkit-transition: all 0.5s;
+    		-o-transition: all 0.5s;
+    		transition: all 0.5s;
+    	}
+
+    	.control_btn.arrow_left{
+    		left:30px;
+    		-webkit-transition: left 0.5s ease;
+    		-o-transition: left 0.5s ease;
+    		transition: left 0.5s ease;
+    	}
+
+    	.control_btn.arrow_left:hover{
+    		left:20px;
+    		-webkit-transition: left 0.5s ease;
+    		-o-transition: left 0.5s ease;
+    		transition: left 0.5s ease;
+    	}
+
+    	.control_btn.arrow_right{
+    		right:30px;
+    		-webkit-transition: right 0.5s ease;
+    		-o-transition: right 0.5s ease;
+    		transition: right 0.5s ease;
+    	}
+
+    	.control_btn.arrow_right:hover{
+    		right:20px;
+    		-webkit-transition: right 0.5s ease;
+    		-o-transition: right 0.5s ease;
+    		transition: right 0.5s ease;
+    	}
+
+    	.img_wrap{
+    		height: 100%;
+    		/*width:100%;*/
+            width:9999999px;
+    		background-color: #0078d8;
+    		position: relative;
+    	}
+
+    	.img_wrap > .inner_wrap{
+            float:left;
+            /*width:100%;*/
+            position: relative;
+            height:235px;
+    	}
+
+        .img_wrap > .inner_wrap img{
+            display: block;
+            margin:0px auto;
+            border: none;
+            width: 100%;
+        }
+
+        .img_wrap > .inner_wrap > .img_ttl{
+            width: 100%;
+            position: absolute;
+            height: 35px;
+            line-height: 35px;
+            color:#fff;
+            left:0px;
+            bottom:0px;
+            background-color: rgba(0,0,0,0.5);
+            color:#fff;
+            font-size: 14px
+        }

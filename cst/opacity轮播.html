@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播</title>
+	<style>
+	    /*carousel.css*/
+#carousel {
+	position: relative;
+	width: 600px;
+	height:277px;
+	margin: 0 auto;
+}
+#carousel input[type='radio'] {
+	position: absolute;
+	bottom: 0;
+	z-index: 120;
+	width: 20%;
+	height: 52px;
+	margin: 0;
+	opacity: 0.5;
+	cursor: pointer;
+	-webkit-transition: opacity 0.5s ease ;
+	-moz-transition: opacity 0.5s ease ;
+	-ms-transition: opacity 0.5s ease ;
+	-o-transition: opacity 0.5s ease ;
+	transition: opacity 0.5s ease ;
+}
+#carousel input[type='radio']:hover {
+	opacity: 1;
+
+}
+
+#carousel input[type='radio']:checked {
+	opacity: 1;
+}
+
+/*触发选中的input紧接着后面的a的样式*/
+
+#carousel input[type='radio']:checked + a {
+	z-index: 110;
+	opacity: 1;
+}
+#carousel input[type='radio']:after {
+	content: '';
+	display: block;
+	height: 52px;
+	background-size:cover;
+
+}
+#carousel input[type='radio']:nth-of-type(1):after {
+	background-image: url("http://img.gx.xyyzi.com/F/spec/20160318/56ebd2fc32eb9.jpg");
+}
+#carousel input[type='radio']:nth-of-type(2) {
+	left: 20%;
+}
+#carousel input[type='radio']:nth-of-type(2):after {
+	background-image: url("http://img.gx.xyyzi.com/F/spec/20160318/56ebd34c7cfbf.jpg");
+}
+#carousel input[type='radio']:nth-of-type(3) {
+	left: 40%;
+}
+#carousel input[type='radio']:nth-of-type(3):after {
+	background-image: url("http://img.gx.xyyzi.com/F/spec/20160318/56ebd333a4ef7.jpg");
+}
+#carousel input[type='radio']:nth-of-type(4) {
+	left: 60%;
+}
+#carousel input[type='radio']:nth-of-type(4):after {
+	background-image: url("http://img.gx.xyyzi.com/F/spec/20160318/56ebd28e9c1ac.jpg");
+}
+#carousel input[type='radio']:nth-of-type(5) {
+	left: 80%;
+}
+#carousel input[type='radio']:nth-of-type(5):after {
+	background-image: url("http://img.gx.xyyzi.com/F/spec/20160318/56ebd31f8d0cf.jpg");
+}
+#carousel a {
+	position: absolute;
+	width: 100%;
+	top:0;
+	z-index: 99;
+        -webkit-transition: opacity 1s ease-in-out ;
+	-moz-transition: opacity 1s ease-in-out ;
+	-ms-transition: opacity 1s ease-in-out ;
+	-o-transition: opacity 1s ease-in-out ;
+	transition: opacity 1s ease-in-out;
+	opacity: 0;
+}
+#carousel a img {
+	max-width: 100%;
+}
+#carousel div {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+#carousel div img {
+	width: 20%;
+	float: left;
+	opacity: 0.5;
+	-webkit-transition: opacity 1s ease-in-out ;
+	-moz-transition: opacity 1s ease-in-out ;
+	-ms-transition: opacity 1s ease-in-out ;
+	-o-transition: opacity 1s ease-in-out ;
+	transition: opacity 1s ease-in-out;
+}
+
+#carousel img.fs-opacity-none {
+	opacity: 1;
+
+}
+.pic{
+	width:300px;
+	height:200px;
+	line-height: 200px;
+	margin:0 auto;
+	text-align: center;
+}
+.pic div{
+	width:300px;
+	line-height: 24px;
+}
+.pic img{
+	vertical-align: middle;
+	max-width: 100%;
+}
+	</style>
+	
+</head>
+<div class="pic">
+	<div>
+	大的萨达大的萨达大的萨达大的萨达大的萨达大的萨达大的萨达大的萨达大的萨达大的萨达大的萨达大的萨达大的萨达大的萨达大的萨达
+</div>
+</div>
+<body>
+	
+	<script>
+	    var pointer = document.querySelectorAll('input[type="radio"]');
+            var init;
+            window.onload = function() {
+                         for(var i = 0;i<pointer.length;i++){
+                                    pointer[i].index = i;
+                                    //鼠标移动到input上面自动轮播暂停
+                                    pointer[i].onmouseover = function() {
+                                    fnStop();
+                                    };
+                                     //鼠标点击input切换图片
+                                    pointer[i].onclick = function() {
+                                           for(var l = 0;l<pointer.length;l++){
+                                                      pointer[l].checked = false;
+                                           }
+                                   this.checked = true;
+                                   };
+                                    //鼠标移出input自动轮播开始
+                                   pointer[i].onmouseout = function() {
+                                             fnStart();
+                                   };
+                          }
+                         //初始化自动轮播
+                         fnStop();
+                         fnStart();
+        };
+        //启动自动轮播
+        function fnStart() {
+                init = setInterval('fnAuto()',2500);
+        }
+        //停止自动轮播
+        function fnStop() {
+               window.clearInterval(init);
+        }
+          //自动轮播
+        function fnAuto() {
+            var aa =document.querySelector('input[type="radio"]:checked').index;
+                if(aa == 4) {
+                        aa=-1;
+                }
+            aa+=1;
+            pointer[aa].checked = true;
+         }
+	</script>
+</body>
+</html>

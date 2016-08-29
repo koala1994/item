@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/angular.min.js" ></script>
+		<script>
+			$(function(){
+//				$.getJSON('ajax.json',function(data){
+//					console.log(data.data.name);
+//					console.log(data.data.age);
+//				})
+//				$.ajax({
+//					async:false,
+//					url:'ajax1.html',
+//					type : 'get',
+//					success:function(data){	
+//						console.log();
+//					},
+//					error:function(err){
+//						console.log(err);
+//					}
+//				})
+				
+			})
+		</script>
+	</head>
+	<body ng-app="myApp" ng-controller="customersCtrl">
+		<ul>
+		  <li>
+		    {{names}}
+		  </li>
+		</ul>
+		<select>
+			<option ng-repeat="x in options">{{x}}</option>
+		</select>
+	</body>
+	<script>
+		var app = angular.module('myApp', []);
+					app.controller('customersCtrl', function($scope, $http) {
+					    $http.get("ajax.json")
+					    .success(function(data) {$scope.names = data.data.name;});
+					    $scope.options=["ni","ha","lun"];
+					});
+	</script>
+</html>

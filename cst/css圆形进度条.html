@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+
+</head>
+<style type="text/css">
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body {
+  font-family: "微软雅黑";
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  border-radius: 50%;
+  background: #0cc;
+}
+
+.pie_left,
+.pie_right {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.left,
+.right {
+  width: 200px;
+  height: 200px;
+  background: #00aacc;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pie_right,
+.right {
+  clip: rect(0, auto, auto, 100px);
+}
+
+.pie_left,
+.left {
+  clip: rect(0, 100px, auto, 0);
+}
+
+.mask {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  left: 25px;
+  top: 25px;
+  background: #FFF;
+  position: absolute;
+  text-align: center;
+  line-height: 150px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #00aacc;
+  font-size: 1rem;
+}
+</style>
+<body>
+    <div class="circle" style="left:0px">
+  <div class="pie_left">
+    <div class="left"></div>
+  </div>
+  <div class="pie_right">
+    <div class="right"></div>
+  </div>
+  <div class="mask"><span>0</span>%</div>
+</div>
+<div class="circle" style="left:220px">
+  <div class="pie_left">
+    <div class="left"></div>
+  </div>
+  <div class="pie_right">
+    <div class="right"></div>
+  </div>
+  <div class="mask"><span>15</span>%</div>
+</div>
+<div class="circle" style="left:440px">
+  <div class="pie_left">
+    <div class="left"></div>
+  </div>
+  <div class="pie_right">
+    <div class="right"></div>
+  </div>
+  <div class="mask"><span>30</span>%</div>
+</div>
+<div class="circle" style="left:660px">
+  <div class="pie_left">
+    <div class="left"></div>
+  </div>
+  <div class="pie_right">
+    <div class="right"></div>
+  </div>
+  <div class="mask"><span>60</span>%</div>
+</div>
+<div class="circle" style="left:880px">
+  <div class="pie_left">
+    <div class="left"></div>
+  </div>
+  <div class="pie_right">
+    <div class="right"></div>
+  </div>
+  <div class="mask"><span>100</span>%</div>
+</div>
+<div class="demo2">
+    <div class="ha ha1">
+        <div class="demo"></div>
+    </div>
+    
+    <div class="ha ha2">
+        <div class="demo1"></div>
+    </div>
+    <div class="mask1">8</div>
+</div>
+<style type="text/css">
+ .ha{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
+ .mask1{
+    width:150px;
+    height:150px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left: -75px;
+    margin-top: -75px;
+    background:#fff;
+    border-radius: 50%;
+}
+.demo2{
+    width:200px;
+    height:200px;
+    border-radius: 500px;
+    background:#0cc;
+    position:absolute;
+    top:200px;
+    left:0px;
+}
+.ha1{
+    clip:rect(0,100px,auto,0px);
+}
+.ha2{
+    clip:rect(0,auto,auto,100px);
+}
+    .demo{
+        width: 200px;
+        height: 200px;
+        background: #00aacc;
+        border-radius: 50%;
+        clip:rect(0,100px,auto,0px);
+        position:absolute;
+        top:0px;
+        left:0px;
+        
+    }
+    .demo1{
+        width: 200px;
+        height: 200px;
+        background: #00aacc;
+        border-radius: 50%;
+        clip:rect(0,auto,auto,100px);
+        position:absolute;
+        top:0px;
+        left:0px;
+            }
+    </style>
+    
+    <script type="text/javascript">
+    document.getElementsByTagName('html')[0].style.fontSize=414/20+"px";
+    console.log(document.getElementsByTagName('html')[0].style.fontSize);
+    console.log(document.documentElement.clientWidth);
+    var bai=0;
+    var timer=setInterval(function(){
+        bai+=1;
+        if(bai<=180){
+             $('.demo1').css('transform','rotate('+bai+'deg)');
+        }
+        else if(bai>180&&bai<=360){
+            var she=bai-180;
+            $('.demo').css('transform','rotate('+she+'deg)');
+        }
+        else{
+            clearInterval(timer);
+        }
+    },22)
+
+    </script>
+ <!--    
+  <canvas id="test" width=200 height=200 style="position:absolute;top:200px;"></canvas> 
+ 
+
+    var canvas2d = document.getElementById("test").getContext("2d");
+    var deg = 0;
+    var test = function(deg){
+        var r = deg*Math.PI/180;   //canvas绘制圆形进度
+        canvas2d.clearRect(0,0,200,200);   //先清理
+        canvas2d.beginPath();  //路径开始
+        //canvas2d.fillStyle = "#fff"; //填充颜色
+        canvas2d.strokeStyle = "#dddddd"; //canvas边框颜色
+        canvas2d.lineWidth = 6; //线宽
+        canvas2d.arc(100,100,95,0-90*Math.PI/180,r-90*Math.PI/180,false); //canvas绘制弧形
+        //canvas2d.fill();
+        canvas2d.stroke();
+        //canvas2d.closePath();
+    };
+//使用定时器让html5 canvas绘制圆形进度动起来
+    var t = setInterval(function(){
+        deg+=10;
+        test(deg);
+        if(deg>360){
+            clearInterval(t);
+        }
+        console.log(deg);
+    },20);
+ -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+  $('.circle').each(function(index, el) {
+    var num = $(this).find('span').text() * 3.6;
+    if (num <= 180) {
+      $(this).find('.right').css('transform', "rotate(" + num + "deg)");
+    } else {
+      $(this).find('.right').css('transform', "rotate(180deg)");
+      $(this).find('.left').css('transform', "rotate(" + (num - 180) + "deg)");
+    };
+  });
+
+});
+    </script>
+</body>
+</html>
+

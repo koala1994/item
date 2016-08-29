@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+<style type="text/css">
+*{
+    padding: 0px;
+    margin: 0px;
+}
+    #div{
+        width:400px;
+        height:300px;
+        border:1px solid red;
+        margin:0 auto;
+        overflow: hidden;
+        position:relative;
+    }
+    #ul{
+        position:absolute;
+        left:0px;
+    }
+    #ul li{
+        width:400px;
+        height:300px;
+        float:left;
+        list-style: none;
+        color:#fff;
+    }
+    #div1{
+        width:108px;
+        margin:0 auto;
+        overflow:hidden;
+        position:relative;
+        bottom:0;
+    }
+    #div1 ul{
+        overflow:hidden;
+        list-style-type: none;
+        text-align: center;
+    }
+    #div1 ul li{
+        width:20px;
+        height:20px;
+        border-radius: 50%;
+        background:#fff;
+        border:1px solid black;
+        float:left;
+        display: inline-block;
+        margin:0px 2.5px;
+        cursor: pointer;
+    }
+    .active{
+        background:black !important;
+    }
+    #left{
+        width:30px;
+        height:60px;
+        background:#fff;
+        position:absolute;
+        left:0;
+        cursor:pointer;
+    }
+    #right{
+        width:30px;
+        height:60px;
+        background:#fff;
+        position:absolute;
+        right:0;
+        cursor:pointer;
+    }
+</style>
+</head>
+<body>
+    <div id="div">
+        <ul id="ul">
+        <li style="background:red">1</li>
+        <li style="background:blue">2</li>
+        <li style="background:black">3</li>
+        <li style="background:green">4</li>
+   </ul>
+        <div id="div1">
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div id="left">
+left
+        </div>
+        <div id="right">
+right
+        </div>
+    </div>
+   <div style="display:none" id="right1">1233</div>
+</body>
+<script type="text/javascript">
+    
+    var Ul=document.getElementById('ul');
+    var Li1=Ul.getElementsByTagName('li');
+    var Li=Ul.getElementsByTagName('li')[0];
+    
+    function cha(obj,width,img){
+        this.width=width;
+        this.img=img;
+        this.obj=obj;
+        this.current=0;
+    }
+
+    cha.prototype.dong=function(){
+        var current=this.current
+        var th=this;
+        var Ul=document.getElementById('ul');
+        clearInterval(this.timer);
+        this.timer=setInterval(function(){
+            var tim=setInterval(function(){
+                if(Ul.offsetLeft<=-1600){
+                    Ul.style.left=0+"px";
+                    clearInterval(tim);
+                }
+            },100)
+            if(current<th.img){
+                
+                current++;
+            }
+            else{
+                current=0;
+            }
+            startMove();
+        },2000)
+        ax.yuan();
+        ax.dian();
+    }
+    cha.prototype.yuan=function(){
+        var div1=document.getElementById("div1");
+        var li2=div1.getElementsByTagName("li");
+        var th=this;
+        var yuanindex=0;
+        for(var i=0;i<li2.length;i++){
+            li2[i].index=i;
+            li2[i].onclick=function(){
+                Ul.style.left=-parseInt(getStyle(Li,"width"))*this.index+"px";
+                clearInterval(th.timer);
+                for(var j=0;j<li2.length;j++){
+                    li2[j].className="";
+                }
+                li2[this.index].className="active";
+                ax.dong();
+            }
+        }
+        var ytimer=setInterval(function(){
+            for(var a=0;a<li2.length;a++){
+                li2[a].className="";
+                yuanindex=Ul.offsetLeft/parseInt(getStyle(Li,"width"));
+                li2[Math.abs(yuanindex)].className="active";
+                }
+            },2000)
+        
+    }
+    cha.prototype.dian=function(){
+        var left=document.getElementById("left");   
+        var right=document.getElementById("right");
+        var th=this;
+        left.onclick=function(){
+            console.log(Ul.offsetLeft/parseInt(getStyle(Li,"width")));
+            if(Ul.offsetLeft/parseInt(getStyle(Li,"width"))>0){
+                Ul.style.left=parseInt(getStyle(Ul,"left"))+parseInt(getStyle(Li,"width"))+"px";
+                clearInterval(th.timer);
+            }
+
+        }
+        right.onclick=function(){
+            console.log(Math.abs(Ul.offsetLeft/parseInt(getStyle(Li,"width"))));
+            if(Math.abs(Ul.offsetLeft/parseInt(getStyle(Li,"width")))<th.img){
+                console.log(1);
+                Ul.style.left=parseInt(getStyle(Ul,"left"))-parseInt(getStyle(Li,"width"))+"px";
+                clearInterval(th.timer);
+            }
+        }
+    }
+    function startMove(){
+        var current=0;
+        if(current<Li1.length-1){
+            Ul.style.left=parseInt(getStyle(Ul,"left"))-parseInt(getStyle(Li,"width"))+"px";
+            current++;
+        }
+        else{
+            Ul.style.left=0+"px";
+            current=0;
+        }
+
+    }
+    function getStyle(obj,attr){
+    if(obj.currentStyle){
+    return obj.currentStyle[attr];
+    }else{
+    return getComputedStyle(obj,false)[attr];
+    }
+}
+window.onclick=function(){
+    if(document.getElementById('right1').style.display=='none'){
+        document.getElementById('right1').style.display='block';
+    }
+}
+console.log(getStyle(Li,"width"));
+var ax=new cha(Ul,1000,4);
+ax.dong();
+
+</script>
+</html>

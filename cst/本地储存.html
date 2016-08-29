@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+<link rel="stylesheet" type="text/css" href="css/boom.css">
+</head>
+<style type="text/css">
+*{
+  margin:0;
+  padding:0;
+}
+#rijie{
+  background: #3BB9FF;
+}
+.active{
+  background:#fff !important;
+}
+</style>
+
+<body>
+  <div id="rijie" class="active" style="cursor:pointer; float: left; width: 10%; height: 50px; margin-left: 2%; border: 1px solid #3BB9FF; line-height: 50px;">
+                                  <center>
+                                      <span style="text-align: center;">日结</span>
+                                    </center>
+                                </div>
+<p>You have viewed this page <span id="count">0</span>  time(s).</p>
+<p><input type="button" value="changeStorage" onClick="changeS()"/></p>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+// var rijie=document.getElementById("rijie");
+//   var rijie1=rijie.style;
+//   rijie.onclick=function(){
+//     if(!rijie1.backgroundColor=='#3BB9FF'){
+//       rijie1.backgroundColor='#3BB9FF';
+//     }else{
+//       rijie1.backgroundColor='#ffffff';
+//     }
+//   };
+$('#rijie').click(function(){
+  $(this).toggleClass('active');
+})
+var arr=[];
+$('.active').each(function(){
+  var text=$(this).find('span').text();
+  arr.push(text);
+})
+console.log(arr);
+var storage = window.localStorage;
+if (!storage.getItem("pageLoadCount")) storage.setItem("pageLoadCount",0);
+storage.pageLoadCount = parseInt(storage.getItem("pageLoadCount")) + 1;//必须格式转换
+document.getElementById("count").innerHTML = storage.pageLoadCount;
+showStorage();
+if(window.addEventListener){
+ window.addEventListener("storage",handle_storage,false);
+}else if(window.attachEvent){
+ window.attachEvent("onstorage",handle_storage);
+}
+function handle_storage(e){
+ if(!e){e=window.event;}
+ showObject(e);
+}
+
+function showObject(obj){
+ //递归显示object
+ if(!obj){return;}
+ for(var i in obj){
+  if(typeof(obj[i])!="object" || obj[i]==null){
+   document.write(i + " : " + obj[i] + "<br/>");
+  }else{
+   document.write(i + " : object" + "<br/>");
+  }
+ }
+}
+storage.setItem("a",5);
+function changeS(){
+ //修改一个键值，测试storage事件
+ if(!storage.getItem("b")){storage.setItem("b",0);}
+ storage.setItem('b',parseInt(storage.getItem('b'))+1);
+}
+function showStorage(){
+ //循环显示localStorage里的键值对
+ for(var i=0;i<storage.length;i++){
+  //key(i)获得相应的键，再用getItem()方法获得对应的值
+  document.write(storage.key(i)+ " : " + storage.getItem(storage.key(i)) + "<br>");
+ }
+}
+</script>
+</body>
+</html>
+

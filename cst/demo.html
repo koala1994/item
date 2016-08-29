@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+<style type="text/css">
+*{
+    padding: 0px;
+    margin: 0px;
+}
+  img{
+    max-width: 100%;
+  } 
+  .big_pic{
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background: #000;
+    display:table;
+    overflow: hidden;
+  }
+  .big_pic span{
+    width:100%;
+    height:250px;
+    display:table-cell;
+    vertical-align: middle;
+  }
+  .big_pic em{
+    width:50px;
+    height:20px;
+    line-height: 20px;
+    text-align: center;
+    background:#fff;
+    display:block;
+    color:#000;
+    font-size:13px;
+    border-radius: 5px;
+    font-style: normal;
+    position:absolute;
+    top:3%;
+    left:5%;
+  }
+  .overhide{
+    height:100%;
+    overflow:hidden;
+  }
+</style>
+</head>
+
+<body>
+    <div class="small"><img src="images/school1.jpg"></div>
+    <div style="position:static;background:red;width:100px;height:100px"></div>
+    <div style="position:absolute;background:orange;width:300px;height:300px"></div>
+    <div style="position:relative;background:blue;width:200px;height:200px"></div>
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+    $('.small img').click(function(){
+        $('body').append('<div class="big_pic"><em onclick="small()">返回</em><span><img onclick="dblimg(this)" src="images/school1.jpg"></span></div>');
+        // $('.big_pic').height($(window).height());
+    })
+                  
+    function small(){
+        $('html,body').removeClass('overhide');
+        $('.big_pic').remove();
+    }
+    function dblimg(obj){
+        console.log($(window).height());
+        if($(obj).height()<$(window).height()){
+            $(obj).height($(obj).height()*1.2);
+            console.log(1);
+        }
+        else{
+            $('html,body').addClass('overhide');
+            return false;
+        } 
+        
+    }
+</script>
+</html>

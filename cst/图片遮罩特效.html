@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+
+</head>
+<style type="text/css">
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.box{
+    width: 240px;
+    height: 160px;
+    border:1px solid #000;
+    margin:100px auto;
+    position:relative;
+    
+}
+.box .normal{
+    height:160px;
+    background: #000;
+}
+.no{
+    position:absolute;
+    top:0;
+    left:0;
+    transform:rotate(-90deg);
+    transform-origin:0 100%;
+}
+.no img{
+    max-width: 100%;
+}
+.act{
+    transition:transform .2s;
+}
+.dong{
+    position:absolute;
+    width:100px;
+    height:50px;
+    background:#000;
+    left:0;
+    top:0;
+}
+</style>
+<body>
+    <div class="dong"></div>
+    <div class="box">
+        <div class="normal"></div>
+        <div class="no" ><img src="images/school1.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="normal"></div>
+        <div class="no" ><img src="images/school2.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="normal"></div>
+        <div class="no"><img src="images/school3.jpg"></div>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+     $(".box").on("mouseenter mouseleave",function(e) {
+        var w = $(this).width();   
+        var h = $(this).height();
+        var that=this  
+        var x=(e.pageX-this.offsetLeft-(w/2))*(w>h?(h/w):1);  
+        var y=(e.pageY-this.offsetTop-(h/2))*(h>w?(w/h):1);  //dirNum:0,1,2,3 ---> t r b l 
+        var dirNum=Math.round((((Math.atan2(y,x)*(180/Math.PI))+180)/90)+3)%4;
+        var eventType = e.type;  
+        var aPos=[{transform:"rotate(-90deg)","transform-origin":"0 0"},{transform:"rotate(90deg)","transform-origin":"100% 100%"},{transform:"rotate(90deg)","transform-origin":"0 100%"},{transform:"rotate(-90deg)","transform-origin":"0 100%"}]; 
+        if(eventType == 'mouseenter'){
+        $(that).find('.no').removeClass('act');  
+            $(that).find('.no').css(aPos[dirNum]);
+            setTimeout(function(){
+                $(that).find('.no').css({"transform":"rotate(0deg)","transition":"transform .2s"});
+            },1)
+              
+        }else{
+        console.log(eventType);  
+            //$(".no").stop(true,true).animate(aPos[dirNum],200);  
+            setTimeout(function(){
+                $(that).find('.no').css(aPos[dirNum]).addClass('act');
+            },1)
+        }  
+    }); 
+
+    </script>
+</body>
+</html>
+

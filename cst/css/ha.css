@@ -1,0 +1,111 @@
+html {
+  font-size: 100px;
+}
+body {
+  background: #eee;
+}
+.sign {
+  padding-left: 1rem;
+  background: #fff;
+}
+.sign h2 {
+  height: .5rem;
+  line-height: .5rem;
+  font-size: .18rem;
+  border-bottom: .01rem solid #cccccc;
+  overflow: hidden;
+}
+.sign h2 em {
+  font-style: normal;
+  color: #919191;
+  font-size: .16rem;
+  font-weight: normal;
+  margin-right: .05rem;
+}
+.sign h2 em b {
+  font-weight: normal;
+}
+.sign h2 .peonum {
+  float: right;
+  font-size: .16rem;
+  color: #f95d6f;
+  font-weight: normal;
+  margin-right: .2rem;
+}
+.sign p {
+  font-size: .13rem;
+  color: #f95d6f;
+  height: .5rem;
+  line-height: .5rem;
+  font-weight: normal;
+  overflow: hidden;
+  padding-right: .2rem;
+}
+.sign p span {
+  float: right;
+}
+.course,
+.lecturer {
+  padding: .15rem;
+  border-top: .15rem solid #eeeeee;
+  background: #fff;
+}
+.lecturer h1,
+.course h1 {
+  height: .4rem;
+  line-height: .4rem;
+  background: url(../images/course-bg.png) center left no-repeat;
+  background-size: 3%;
+  font-size: .2rem;
+  padding-left: .2rem;
+  font-weight: normal;
+}
+.course p {
+  color: #333333;
+  font-size: .14rem;
+}
+.lecturer {
+  font-size: 0;
+  overflow: hidden;
+}
+.lecturer span {
+  display: block;
+  float: left;
+}
+.lecturer span img {
+  width: .5rem;
+  height: .5rem;
+  display: inline-block;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.lecturer em {
+  font-size: .15rem;
+  color: #666666;
+}
+.lecturer p {
+  font-size: .14rem;
+  color: #999999;
+}
+.lecturer div {
+  width: 79%;
+  float: right;
+}
+.enter {
+  width: 90%;
+  height: .35rem;
+  line-height: .35rem;
+  display: block;
+  font-size: .16rem;
+  color: #fff;
+  margin: .2rem auto .35rem;
+  text-align: center;
+  background: #f95d6f;
+  -moz-border-radius: .05rem;
+  /* Firefox */
+  -webkit-border-radius: .05rem;
+  /* Safari 和 Chrome */
+  border-radius: .05rem;
+  /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+}

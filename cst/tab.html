@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+			#tab ul li{
+				width:25%;
+				height:50px;
+				line-height: 50px;
+				float:left;
+				list-style-type: none;
+				text-align: center;
+				border:1px solid black;
+				box-sizing:border-box;
+        		-moz-box-sizing:border-box;
+        		cursor:pointer;
+			}
+			#tab ul{
+				overflow: hidden;
+			}
+			#tab-content div{
+				width:100%;
+				height:248px;
+				border:1px solid red;
+				display: none;
+			}
+			#contain{
+				width:400px;
+				height:300px;
+			}
+			.active{
+				background: black;
+				color:#fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="contain">
+			<div id="tab">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+		<div id="tab-content">
+			<div style="display:block">1
+			</div>
+			<div>2
+			</div>
+			<div>3
+			</div>
+			<div>4
+			</div>
+		</div>
+		</div>
+
+		<ul class="ni">
+			<li><input type="checkbox">13</li>
+			<li><input type="checkbox">1</li>
+
+		</ul>
+		<br>
+		<br>
+		<br>
+		<ul class="ni1">
+			<li><input type="checkbox">13</li>
+			<li><input type="checkbox">12</li>
+
+		</ul>
+		<input type="button" value="ni" class="but">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			$('.but').click(function(){
+				$('.ni li').each(function(){
+					if($(this).find('input').attr('checked')=='checked'){
+						$(this).find('input').attr('checked','false');
+						$('.ni1').append($(this));
+					}
+				})
+			})
+		</script>
+		<script type="text/javascript">
+			var tab=document.getElementById("tab");
+			var tabLi=tab.getElementsByTagName("li");
+			var tabC=document.getElementById("tab-content");
+			var tabD=tabC.getElementsByTagName("div");
+			for(var i=0;i<tabLi.length;i++){
+				tabLi[i].index=i;
+				tabLi[i].onclick=function(){
+					for(var j=0;j<tabLi.length;j++){
+						tabLi[j].className="";
+						tabD[j].style.display="none";
+					}
+					tabLi[this.index].className="active";
+					tabD[this.index].style.display="block";
+				}
+			}
+		</script>
+	</body>
+</html>

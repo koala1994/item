@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+<link rel="stylesheet" type="text/css" href="css/boom.css">
+</head>
+<style type="text/css">
+*{
+  
+}
+
+</style>
+
+<body>
+  <input id="box" type="text">
+  <a id="btn" href="javascript:;">点击</a>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript">
+    var box=document.getElementById('box');
+    var btn=document.getElementById('btn');
+    var a=[];
+    var text=0;
+    btn.onclick=function(){
+        var txt=box.value;
+        a[text]=txt;
+        text++;
+        console.log(a);
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:wb="http://open.weibo.com/wb">
+<head></head>
+<style type="text/css">
+	.ball{
+		width:40px;
+		height:40px;
+		border-radius: 50%;
+		
+	}
+	.ball1{
+		
+		background: red;
+	}
+	.ball2{
+		
+		background: green;
+	}
+	.ball3{
+		
+		background: blue;
+	}
+	.div{
+		width:62px;
+		height:22px;
+		background:orange;
+		position:relative;
+		z-index: 12112;
+	}
+</style>
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+<body>
+	<div class="ball ball1" style="margin-left:0"></div>
+	<div class="ball ball2" style="margin-left:0"></div>
+	<div class="ball ball3" style="margin-left:0"></div>
+	<div class="div"><wb:share-button addition="simple" type="button" default_text="谢谢你的分享"></wb:share-button></div>
+	<script type="text/javascript">
+		var b1=document.querySelector('.ball1');
+		var b2=document.querySelector('.ball2');
+		var b3=document.querySelector('.ball3');
+
+	function animate1(ball,distance,cb){
+		setTimeout(function(){
+			var marginLeft=parseInt(ball.style.marginLeft,10);
+			if(marginLeft===distance){
+				cb && cb();
+			}else{
+				if(marginLeft<distance){
+				marginLeft++;
+				
+				}else{
+				marginLeft--;
+				}
+				ball.style.marginLeft=marginLeft+'px';
+				animate1(ball,distance,cb);
+			}
+			
+		},13)
+	}
+	animate1(b1,100,function(){
+		animate1(b2,150,function(){
+			animate1(b3,200,function(){
+				animate1(b3,50,function(){
+					animate1(b2,50,function(){
+						animate1(b1,50,function(){
+		
+						})
+					})
+				})
+			})
+		})
+	})
+</script>
+</body>
+
+</html>

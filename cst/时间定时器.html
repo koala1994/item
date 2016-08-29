@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+
+</head>
+<style type="text/css">
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+</style>
+<body>
+    <div><span class="hours">0</span><span class="fen">1</span>:<span class="theTime">02</span></div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+    var timer=setInterval(function(){
+        var miao = parseInt($('.theTime').text());// 秒
+            var fen = $('.fen').text();// 分
+            var hours = $('.hours').text();// 小时
+            // if (theTime > 60) {
+            //     theTime1 = parseInt(theTime / 60);
+            //     theTime = parseInt(theTime % 60);
+            //     if (theTime1 > 60) {
+            //         theTime2 = parseInt(theTime1 / 60);
+            //         theTime1 = parseInt(theTime1 % 60);
+            //     }
+            // }
+             miao-=1;
+            if(miao<0){
+                miao=59;
+                fen-=1;
+                if(hours>0){
+                    if(fen<0){
+                    fen=9;
+                    hours-=1;
+                    }
+                }
+                
+            }
+    if(miao==0&&fen==0&&hours==0){
+        clearInterval(timer);
+    }
+           
+            $('.theTime').text(miao);
+            $('.fen').text(fen);
+            $('.hours').text(hours);
+    },1000)
+    </script>
+</body>
+</html>
+

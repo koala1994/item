@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>gulu2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <style type="text/css">
+    *{
+    	margin: 0;
+    	padding: 0;
+    }
+    html,body{
+    	width:100%;
+    	height:100%;
+    }
+    	.show_box,.box{
+    		width:100%;
+    		height:100%;
+    	}
+    	.box div{
+    		width:100%;
+    		height:100%;
+    	}
+    	.right{
+    		width:12px;
+    		position: absolute;
+    		top:50%;
+    		right:3%;
+    	}
+    	.right li{
+    		width:12px;
+    		height:12px;
+    		border-radius: 50%;
+    		margin:20px 0px;
+    		background: #fff;
+    		list-style: none;
+    		position:relative;
+    	}
+    	.active{
+    		background:#EAA043 !important;
+    	}
+    	.right li a{
+    		    width: 50px;
+			    height: 22px;
+			    position: absolute;
+			    right: 20px;
+			    top: -5px;
+			    background:#fff;
+			    font-size: 12px;
+			    line-height: 22px;
+			    color: #3fc5aa;
+			    padding: 0px 9px 0px 5px;
+			    border-radius: 2px;
+			    box-shadow: -1px 1px 1px #aaa;
+			    display:none;
+			    	}
+    	.right li span{
+    		    width: 100%;
+			    height: 22px;
+			    background-color: #fff;
+			    text-align: center;
+			    display:block;
+			    
+    	}
+    </style>
+</head>
+
+<body style="overflow:-Scroll;overflow-y:hidden" >
+	<div class="show_box">
+		<div class="box">
+			<div style="background:green"></div>
+			<div style="background:blue"></div>
+			<div style="background:red"></div>
+			<div style="background:black"></div>
+		</div>
+		<ul class="right">
+			<li class="active">
+				<a style="display:block"><span>绿色</span></a>
+				
+			</li>
+			<li>
+				<a><span>绿色</span></a>
+			</li>
+			<li>
+				<a><span>绿色</span></a>
+			</li>
+			<li>
+				<a><span>绿色</span></a>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		var	height=$(window).height();
+		var index=0;
+		var timer;
+
+$(document).on("mousewheel DOMMouseScroll",gun); //绑定鼠标滚轮事件
+    function gun(e) {//鼠标滚轮事件
+    
+    var delta = (e.originalEvent.wheelDelta && (e.originalEvent.wheelDelta > 0 ? 1 : -1)) ||  // chrome & ie
+                (e.originalEvent.detail && (e.originalEvent.detail > 0 ? -1 : 1));              // firefox
+
+    
+    if (delta < 0) {
+        // 向下滚
+        if(index<$('.box>div').size()-1){
+                    index++;
+                }
+    } else if (delta > 0) {
+        // 向上滚
+        if(index>0){
+                    
+                    index--;
+                }
+    }
+             $('.right>li').removeClass('active').eq(index).addClass('active');
+            $('.right>li>a').hide();
+            $('.right>li').eq(index).children().show();
+            clearTimeout(timer);
+            //timer=setTimeout("slide()",500);
+            slide();
+            $(document).unbind();//解绑事件
+            setTimeout(function(){
+                $(document).on("mousewheel DOMMouseScroll",gun);//1s之后重新绑定事件
+            },1000);
+};
+function slide(){
+	$('.box').css({'-webkit-transform':'translateY('+(-height)*index+'px)','-webkit-transition':'-webkit-transform 1s ease-in-out'});
+}
+	</script>
+</body>
+</html>

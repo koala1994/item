@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+<link rel="stylesheet" type="text/css" href="css/boom.css">
+</head>
+<style>
+
+.ni {
+  height:35px;width:32px;
+  
+  cursor: pointer;
+  -webkit-transition: background-position 0.5s steps(4);
+  transition: background-position 0.5s steps(4);
+  -webkit-transition-duration: 0s;
+          transition-duration: 0s;
+  background:url(http://www.web-tinker.com/share/兔斯基揉脸.png);
+  background-position: 0 0px;
+}
+.is-active {
+  -webkit-transition-duration: .5s;
+          transition-duration: .5s;
+  background-position: 0px -140px;
+}
+.close{
+  width:75px;
+  height:30px;
+  line-height: 30px;
+  border:1px solid #ccc;
+  padding-left: 20px;
+  position:relative;
+}
+img{
+  max-width: 100%;
+  display:inline-block;
+  vertical-align: middle;
+  position:absolute;
+  right:5%;
+  top:10%;
+}
+</style>
+<body>
+  <div class="ni"></div>
+  <div class="close">语文<img src="images/关闭.png"></div>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+        $(function() {
+  $("div").on("click", function() {
+    $(this).toggleClass("is-active");
+  });
+});
+        var ni;
+        console.log(typeof ni)
+    </script>
+</body>
+</html>
+

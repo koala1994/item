@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5款不同效果jQuery滑块选值特效</title>
+
+<link href="base.css" rel="stylesheet">
+<style>
+.wrap{ margin-top:30px;}
+.line{ width:500px; float:left; margin:auto; height:3px; line-height:5px; background:#deaf62; font-size:5px;  margin-top:10px; position:relative;}
+.line i{ border:1px solid #ccc; border-radius:50%; background:#deaf62; left:0; width:13px; height:13px; top:-4px; display:block; position:absolute; cursor:pointer }
+.circle {
+float:left;	
+display: block;
+background: black;
+border-radius: 50%;
+height: 30px;
+width: 30px;
+margin: 0;
+}
+.circle1 {
+display: block;
+background: bisque;
+border-radius: 50%;
+height: 30px;
+width: 30px;
+margin: 0;
+float:left;
+}
+.clear{ line-height:0; font-size:0; height:0; clear:both;}
+.sp{ position:relative;}
+.sp span{ position:absolute; top:-15px; left:-5px; font-style:normal; font-size:12px; width:20px; text-align:center; display:block;}
+</style>
+<script src="js/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$('.line').click(function(ev){
+		var left= ev.pageX - $(this).offset().left;
+		console.log(ev.pageX);
+		console.log($(this).offset().left);
+		$(this).find('i').animate({
+			left :left-6
+		});
+		document.title = left
+		$(this).find('span')[0].innerHTML = parseInt((left/500)*100) + '%'
+	});
+})
+</script>
+</head>
+<body>
+
+<div class="wrap">
+    <figure class="circle"></figure>
+	<div class="line">
+    	<i>
+        	<div class="sp"><span>0%</span></div>
+        </i>        
+    </div>
+    <figure class="circle1"></figure>
+    <div class="clear"></div>
+</div>
+</body>
+</html>

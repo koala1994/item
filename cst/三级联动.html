@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jsAddress.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<style>
+			select{
+				width:120px;
+				border:0px;
+				outline: none;
+			}
+			.select{
+				    width: 100px;
+    				float: left;
+    				margin-right:10px ;
+			}
+		</style>
+	</head>
+	<body>
+<div>
+	<select id="Select1" style="display:none"></select>
+	<div class="select">
+		<select id="Select2"></select>
+	</div>
+	<div class="select">
+		<select id="Select3"></select>
+	</div>
+
+<script type="text/javascript">
+addressInit('Select1', 'Select2', 'Select3');
+</script>
+</div>
+</body>
+</html>

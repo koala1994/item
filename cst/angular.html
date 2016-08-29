@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		input.ng-invalid {
+   			 background-color: red;
+		}
+
+		</style>
+	</head>
+
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<input ng-model="name" required></input>
+		<label ng-bind="name|currency"></label>
+	<form ng-app="" name="myForm">
+    Email:
+    <input name="myAddress" ng-model="text">
+    <span ng-show="myForm.myAddress.$error.email">不是一个合法的邮箱地址</span>
+    d12:{{he()}} </br>
+    <span ng-repeat="x in key">{{x.name+','+x.country}}</span>
+    <span ng-repeat="x in her">{{x|myfil}}</span>
+
+    <ul>
+  <li ng-repeat="x in names">
+    {{ x.Name + ', ' + x.Country }}
+  </li>
+</ul>
+<select ng-model="selectName" ng-options="x.site for x in bar"></select>
+<h1>{{selectName.site}}</h1>
+<h1>{{selectName.url}}</h1>
+</form>
+<table>
+	<tr ng-repeat="x in tab">
+		<td>{{x.name}}</td>
+		<td>{{x.country}}</td>
+	</tr>
+</table>
+
+	</body>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript">
+	var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope,myser,$http) {
+    $scope.name = "John Doe";
+    $scope.text = "hello";
+
+    $scope.key=[
+        {name:'Jani',country:'Norway'},
+        {name:'Hege',country:'Sweden'},
+        {name:'Kai',country:'Denmark'}
+    ];
+    $scope.bar=[{site : "Google", url : "http://www.google.com"},
+	    {site : "Runoob", url : "http://www.runoob.com"},
+	    {site : "Taobao", url : "http://www.taobao.com"}];
+    $scope.her=[255,202,200];
+    $scope.tab=[{"name":"123","country":"ab"},{"name":"23","country":"b"}]
+    $scope.he=function(){
+    	return $scope.name+$scope.text;
+    }
+     $http.get("http://www.runoob.com/try/angularjs/data/Customers_JSON.php").success(function (response) {$scope.names = response.records;});
+  
+});
+
+app.service('myser',function(){
+	this.myfunc=function(x){
+		return x.toString(16);
+	}
+})
+app.filter('myfil',['myser',function(myser){
+	return function(x){
+		return myser.myfunc(x);
+	}
+}]);
+	</script>
+</html>

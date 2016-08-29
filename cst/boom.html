@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+<link rel="stylesheet" type="text/css" href="css/boom.css">
+</head>
+<style type="text/css">
+*{
+  cursor: url(images/cd_glowsword.cur),auto !important;
+}
+*:active{
+  cursor: url(images/cd_glaive.cur),auto !important;
+}
+.outer{width:200px;height:200px;background:#000;filter:alpha(opacity=20);opacity:.2;color:#fff;}
+.inner{width:200px;height:200px;margin-top:-200px;}
+</style>
+<script type="text/javascript">
+
+</script>
+<body style="height:2000px">
+  <img src="images/school1.jpg">
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/boom.js"></script>
+  <script type="text/javascript">
+  $('img').click(function(){
+    boom($('img'),{
+  // 缩放值
+ 'scaleLevel' : 8,
+  // 模糊值
+ 'blurLevel': 9,
+  // 弹射距离 
+ 'boomLevel': 10,
+  // 爆炸时长
+ 'boomTime':800,
+  // 是否打开日志
+ 'isOpenLog':true
+});
+  })
+  
+  </script>
+</body>
+</html>
+
